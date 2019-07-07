@@ -9,7 +9,14 @@ namespace WpfApp_MvvM.Models
 {
     class ShopContext : DbContext
     {
-        public ShopContext() : base("DefaultConnection") {}
+        static ShopContext()
+        {
+            Database.SetInitializer(new ShopContextInitializer());
+        }
+        public ShopContext() : base("DefaultConnection")
+        {
+            
+        }
 
         public DbSet<Product> Products { get; set; }
     }
